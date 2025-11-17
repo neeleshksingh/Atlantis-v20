@@ -3,10 +3,11 @@ import { AppBreadcrumbService } from './app.breadcrumb.service';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import {AppMainComponent} from './app.main.component';
+import { SharedModule } from './shared.module';
 
 @Component({
     selector: 'app-breadcrumb',
-    templateUrl: './app.breadcrumb.component.html'
+    templateUrl: './app.breadcrumb.component.html',
 })
 export class AppBreadcrumbComponent implements OnDestroy {
 

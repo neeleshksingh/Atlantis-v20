@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SharedModule } from 'src/app/shared.module';
 
 enum BlockView {
   PREVIEW,
@@ -35,10 +36,12 @@ enum BlockView {
         </div>
     </div>
   `,
-  styleUrls: ['./blockviewer.component.scss']
+  styleUrls: ['./blockviewer.component.scss'],
+  standalone: true,
+  imports: [SharedModule]
 })
 export class BlockViewer {
-  
+
   @Input() header: string;
 
   @Input() code: string;
@@ -55,9 +58,9 @@ export class BlockViewer {
 
   blockView: BlockView = BlockView.PREVIEW;
 
-  activateView(event: Event, blockView: BlockView) {
+  activateView(event: Event, blockView: BlockView) {
 
-    this.blockView = blockView;  
+    this.blockView = blockView;
     event.preventDefault();
   }
 

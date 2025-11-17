@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from '../demo/domain/product';
-import {ProductService} from '../demo/service/productservice';
-import {ConfirmationService, MessageService} from 'primeng/api';
-import {AppBreadcrumbService} from '../app.breadcrumb.service';
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../demo/domain/product';
+import { ProductService } from '../demo/service/productservice';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { AppBreadcrumbService } from '../app.breadcrumb.service';
 import { Table } from 'primeng/table';
+import { SharedModule } from '../shared.module';
 
 @Component({
     templateUrl: './app.crud.component.html',
@@ -26,7 +27,9 @@ import { Table } from 'primeng/table';
         }
 
     `],
-    providers: [MessageService, ConfirmationService]
+    providers: [MessageService, ConfirmationService],
+    standalone: true,
+    imports: [SharedModule]
 })
 export class AppCrudComponent implements OnInit {
 
@@ -51,7 +54,7 @@ export class AppCrudComponent implements OnInit {
     rowsPerPageOptions = [5, 10, 20];
 
     constructor(private productService: ProductService, private messageService: MessageService,
-                private confirmationService: ConfirmationService, private breadcrumbService: AppBreadcrumbService) {
+        private confirmationService: ConfirmationService, private breadcrumbService: AppBreadcrumbService) {
         this.breadcrumbService.setItems([
             { label: 'Pages' },
             { label: 'Crud', routerLink: ['/pages/crud'] }
@@ -62,11 +65,11 @@ export class AppCrudComponent implements OnInit {
         this.productService.getProducts().then(data => this.products = data);
 
         this.cols = [
-            {field: 'name', header: 'Name'},
-            {field: 'price', header: 'Price'},
-            {field: 'category', header: 'Category'},
-            {field: 'rating', header: 'Reviews'},
-            {field: 'inventoryStatus', header: 'Status'}
+            { field: 'name', header: 'Name' },
+            { field: 'price', header: 'Price' },
+            { field: 'category', header: 'Category' },
+            { field: 'rating', header: 'Reviews' },
+            { field: 'inventoryStatus', header: 'Status' }
         ];
 
         this.statuses = [

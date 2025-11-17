@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {EventService} from '../demo/service/eventservice';
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../demo/service/eventservice';
 import { AppBreadcrumbService } from '../app.breadcrumb.service';
 // @fullcalendar plugins
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import { SharedModule } from '../shared.module';
 
 @Component({
     templateUrl: './app.calendar.component.html',
@@ -22,7 +23,9 @@ import timeGridPlugin from '@fullcalendar/timegrid';
                 background: var(--fc-highlight-color, rgba(63, 81, 181, 0.12));
             }
         }
-    `]
+    `],
+    standalone: true,
+    imports: [SharedModule]
 })
 export class AppCalendarComponent implements OnInit {
 
@@ -48,7 +51,7 @@ export class AppCalendarComponent implements OnInit {
     ngOnInit() {
         this.eventService.getEvents().then(events => {
             this.events = events;
-            this.options = {...this.options, ...{events: events}};
+            this.options = { ...this.options, ...{ events: events } };
         });
 
         this.options = {
@@ -74,7 +77,7 @@ export class AppCalendarComponent implements OnInit {
             }
         };
 
-        this.changedEvent = {title: '', start: null, end: '', allDay: null};
+        this.changedEvent = { title: '', start: null, end: '', allDay: null };
     }
 
     save() {
@@ -85,7 +88,7 @@ export class AppCalendarComponent implements OnInit {
         this.clickedEvent.setEnd(this.changedEvent.end);
         this.clickedEvent.setAllDay(this.changedEvent.allDay);
 
-        this.changedEvent = {title: '', start: null, end: '', allDay: null};
+        this.changedEvent = { title: '', start: null, end: '', allDay: null };
     }
 
     reset() {

@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import {AppComponent} from './app.component';
+import { Component } from '@angular/core';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared.module';
 
 @Component({
     selector: 'app-footer',
@@ -11,8 +12,8 @@ import {AppComponent} from './app.component';
             </div>
             <span class="copyright">&#169; Your Organization - 2021</span>
         </div>
-    `
+    `,
 })
 export class AppFooterComponent {
-    constructor(public app: AppComponent) {}
+    constructor(public app: AppComponent) { }
 }

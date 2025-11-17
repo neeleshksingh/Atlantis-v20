@@ -5,21 +5,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { AppTopbarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
-import { AppSideBarComponent } from './app.sidebar.component';
-import { AppSideBarTabContentComponent } from './app.sidebartabcontent.component';
 import { AppMenuComponent } from './app.menu.component';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-        imports: [ RouterTestingModule ],
-        declarations: [ AppComponent,
-                AppTopbarComponent,
-                AppMenuComponent,
-                AppFooterComponent,
-                AppSideBarComponent,
-                AppSideBarTabContentComponent
-            ]
+      imports: [RouterTestingModule],
+      declarations: [AppComponent,
+        AppTopbarComponent,
+        AppMenuComponent,
+        AppFooterComponent
+      ]
     });
     TestBed.compileComponents();
   });

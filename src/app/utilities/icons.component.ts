@@ -1,15 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {IconService} from '../demo/service/iconservice';
-import {AppBreadcrumbService} from '../app.breadcrumb.service';
+import { Component, OnInit } from '@angular/core';
+import { IconService } from '../demo/service/iconservice';
+import { AppBreadcrumbService } from '../app.breadcrumb.service';
+import { SharedModule } from '../shared.module';
+import { AppCodeModule } from "../blocks/app-code/app.code.component";
 
 @Component({
-    templateUrl: './icons.component.html'
+    templateUrl: './icons.component.html',
+    standalone: true,
+    imports: [SharedModule, AppCodeModule]
 })
 export class IconsComponent implements OnInit {
 
-    icons: any [];
+    icons: any[];
 
-    filteredIcons: any [];
+    filteredIcons: any[];
 
     constructor(private iconService: IconService, private breadcrumbService: AppBreadcrumbService) {
         this.breadcrumbService.setItems([
@@ -17,27 +21,27 @@ export class IconsComponent implements OnInit {
             { label: 'Icons', routerLink: ['/utilities/icons'] }
         ]);
     }
-    
+
     ngOnInit() {
-		this.iconService.getIcons().subscribe(data => {
+        this.iconService.getIcons().subscribe(data => {
             data = data.filter(value => {
                 return value.icon.tags.indexOf('deprecate') === -1;
             });
 
             let icons = data;
             icons.sort((icon1, icon2) => {
-                if(icon1.properties.name < icon2.properties.name)
+                if (icon1.properties.name < icon2.properties.name)
                     return -1;
-                else if(icon1.properties.name < icon2.properties.name)
+                else if (icon1.properties.name < icon2.properties.name)
                     return 1;
                 else
                     return 0;
             });
 
             this.icons = icons;
-			this.filteredIcons = data;
-		});
-	}
+            this.filteredIcons = data;
+        });
+    }
 
     onFilter(event: KeyboardEvent): void {
         const searchText = (event.target as HTMLInputElement).value;

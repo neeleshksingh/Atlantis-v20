@@ -1,10 +1,13 @@
-import {Component} from '@angular/core';
-import {AppMainComponent} from './app.main.component';
+import { Component } from '@angular/core';
+import { AppMainComponent } from './app.main.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { SharedModule } from './shared.module';
 
 @Component({
     selector: 'app-inlinemenu',
     templateUrl: './app.inlinemenu.component.html',
+    standalone: true,
+    imports: [SharedModule],
     animations: [
         trigger('inline', [
             state('hidden', style({
@@ -27,5 +30,5 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]
 })
 export class AppInlineMenuComponent {
-    constructor(public appMain: AppMainComponent) {}
+    constructor(public appMain: AppMainComponent) { }
 }

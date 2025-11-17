@@ -1,15 +1,18 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {EventService} from '../service/eventservice';
-import {PrimeIcons} from 'primeng/api';
-import {Customer} from '../domain/customer';
-import {CustomerService} from '../service/customerservice';
-import {AppBreadcrumbService} from '../../app.breadcrumb.service';
-import {AppConfig} from '../domain/appconfig';
-import {ConfigService} from '../service/app.config.service';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { EventService } from '../service/eventservice';
+import { PrimeIcons } from 'primeng/api';
+import { Customer } from '../domain/customer';
+import { CustomerService } from '../service/customerservice';
+import { AppBreadcrumbService } from '../../app.breadcrumb.service';
+import { AppConfig } from '../domain/appconfig';
+import { ConfigService } from '../service/app.config.service';
+import { Subscription } from 'rxjs';
+import { SharedModule } from 'src/app/shared.module';
 
 @Component({
     templateUrl: './dashboard.component.html',
+    standalone: true,
+    imports: [SharedModule]
 })
 export class DashboardDemoComponent implements OnInit, OnDestroy {
 
@@ -91,8 +94,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
 
     constructor(private customerService: CustomerService, private eventService: EventService, private breadcrumbService: AppBreadcrumbService, public configService: ConfigService) {
         this.breadcrumbService.setItems([
-            {label: 'Dashboard'},
-            {label: 'Sales Dashboard', routerLink: ['/']},
+            { label: 'Dashboard' },
+            { label: 'Sales Dashboard', routerLink: ['/'] },
         ]);
 
         this.config = this.configService.config;
@@ -138,7 +141,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                 {
                     label: 'Groth actual',
                     data: [600, 671, 660, 665, 700, 610, 810, 790, 710, 860, 810, 780],
-                    backgroundColor: getComputedStyle(document.body).getPropertyValue('--primary-color') ,
+                    backgroundColor: getComputedStyle(document.body).getPropertyValue('--primary-color'),
                     fill: true,
                     barPercentage: 0.5,
                     stepped: true
@@ -151,8 +154,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                 legend: {
                     position: 'top',
                     align: 'end',
-                    labels:{
-                        color:'#ebedef'
+                    labels: {
+                        color: '#ebedef'
                     }
                 },
             },
@@ -162,8 +165,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
             },
             scales: {
                 y: {
-                    ticks:{
-                        color:'#ebedef'
+                    ticks: {
+                        color: '#ebedef'
                     },
                     min: 500,
                     max: 900
@@ -173,8 +176,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                     }
                 },
                 x: {
-                    ticks:{
-                        color:'#ebedef'
+                    ticks: {
+                        color: '#ebedef'
                     },
                     barPercentage: 0.5,
                     grid: {
@@ -188,22 +191,38 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         this.avgCustomer = '$1,120';
 
         this.timelineEvents = [
-            {transaction: 'Payment from #28492', amount: '+$250.00', date: 'June 13, 2020 11:09 AM',
-                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'},
-            {transaction: 'Process refund to #94830', amount: '-$570.00', date: 'June 13, 2020 08:22 AM',
-                icon: PrimeIcons.REFRESH, iconColor: '#FC6161', amountColor: '#FC6161'},
-            {transaction: 'New 8 user to #5849', amount: '+$50.00', date: 'June 12, 2020 02:56 PM',
-                icon: PrimeIcons.PLUS, iconColor: '#0BD18A', amountColor: '#0BD18A'},
-            {transaction: 'Payment from #3382', amount: '+$3830.00', date: 'June 11, 2020 06:11 AM',
-                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'},
-            {transaction: 'Payment from #4738', amount: '+$845.00', date: 'June 11, 2020 03:50 AM',
-                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'},
-            {transaction: 'Payment failed form #60958', amount: '$1450.00', date: 'June 10, 2020 07:54 PM',
-                icon: PrimeIcons.EXCLAMATION_TRIANGLE, iconColor: '#EC4DBC', amountColor: '#EC4DBC'},
-            {transaction: 'Payment from #5748', amount: '+$50.00', date: 'June 09, 2020 11:37 PM',
-                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'},
-            {transaction: 'Removed 32 users from #5849', amount: '-$240.00', date: 'June 09, 2020 08:40 PM',
-                icon: PrimeIcons.MINUS, iconColor: '#FC6161', amountColor: '#FC6161'},
+            {
+                transaction: 'Payment from #28492', amount: '+$250.00', date: 'June 13, 2020 11:09 AM',
+                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'
+            },
+            {
+                transaction: 'Process refund to #94830', amount: '-$570.00', date: 'June 13, 2020 08:22 AM',
+                icon: PrimeIcons.REFRESH, iconColor: '#FC6161', amountColor: '#FC6161'
+            },
+            {
+                transaction: 'New 8 user to #5849', amount: '+$50.00', date: 'June 12, 2020 02:56 PM',
+                icon: PrimeIcons.PLUS, iconColor: '#0BD18A', amountColor: '#0BD18A'
+            },
+            {
+                transaction: 'Payment from #3382', amount: '+$3830.00', date: 'June 11, 2020 06:11 AM',
+                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'
+            },
+            {
+                transaction: 'Payment from #4738', amount: '+$845.00', date: 'June 11, 2020 03:50 AM',
+                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'
+            },
+            {
+                transaction: 'Payment failed form #60958', amount: '$1450.00', date: 'June 10, 2020 07:54 PM',
+                icon: PrimeIcons.EXCLAMATION_TRIANGLE, iconColor: '#EC4DBC', amountColor: '#EC4DBC'
+            },
+            {
+                transaction: 'Payment from #5748', amount: '+$50.00', date: 'June 09, 2020 11:37 PM',
+                icon: PrimeIcons.CHECK, iconColor: '#0F8BFD', amountColor: '#00D0DE'
+            },
+            {
+                transaction: 'Removed 32 users from #5849', amount: '-$240.00', date: 'June 09, 2020 08:40 PM',
+                icon: PrimeIcons.MINUS, iconColor: '#FC6161', amountColor: '#FC6161'
+            },
         ];
 
         this.countryChart = {
@@ -299,7 +318,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                 mode: 'index'
             },
             scales: {
-                x:{
+                x: {
                     ticks: {
                         color: '#ebedef'
                     },
@@ -482,8 +501,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                     ticks: {
                         color: '#ebedef'
                     },
-                    grid : {
-                        display : false
+                    grid: {
+                        display: false
                     }
                 }
             },
@@ -496,38 +515,38 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         this.customerAvg = '875';
 
         this.customerCarousel = [
-            {user: '9,673 Users', value: '$8,362,478', image: 'nasa'},
-            {user: '9,395 Users', value: '$7,927,105', image: 'beats'},
-            {user: '7,813 Users', value: '$6,471,594', image: 'gopro'},
-            {user: '7,613 Users', value: '$5,697,883', image: 'north'},
-            {user: '98,673 Users', value: '$7,653,311', image: 'mc'},
-            {user: '5,645 Users', value: '$4,567,823', image: 'dell'},
-            {user: '5,153 Users', value: '$5,342,678', image: 'wwf'},
-            {user: '4,338 Users', value: '$5,867,391', image: 'bmw'},
-            {user: '4,170 Users', value: '$4,647,233', image: 'pepsi'},
-            {user: '3,765 Users', value: '$4,123,876', image: 'netflix'},
-            {user: '3,490 Users', value: '$3,688,362', image: 'deloitte'},
-            {user: '2,976 Users', value: '$3,978,478', image: 'pg'},
+            { user: '9,673 Users', value: '$8,362,478', image: 'nasa' },
+            { user: '9,395 Users', value: '$7,927,105', image: 'beats' },
+            { user: '7,813 Users', value: '$6,471,594', image: 'gopro' },
+            { user: '7,613 Users', value: '$5,697,883', image: 'north' },
+            { user: '98,673 Users', value: '$7,653,311', image: 'mc' },
+            { user: '5,645 Users', value: '$4,567,823', image: 'dell' },
+            { user: '5,153 Users', value: '$5,342,678', image: 'wwf' },
+            { user: '4,338 Users', value: '$5,867,391', image: 'bmw' },
+            { user: '4,170 Users', value: '$4,647,233', image: 'pepsi' },
+            { user: '3,765 Users', value: '$4,123,876', image: 'netflix' },
+            { user: '3,490 Users', value: '$3,688,362', image: 'deloitte' },
+            { user: '2,976 Users', value: '$3,978,478', image: 'pg' },
         ];
 
         this.orderYear = [
-            {name: '2021', code: '0'},
-            {name: '2020', code: '1'}
+            { name: '2021', code: '0' },
+            { name: '2020', code: '1' }
         ];
 
         this.visitorYear = [
-            {name: '2020', code: '0'},
-            {name: '2019', code: '1'}
+            { name: '2020', code: '0' },
+            { name: '2019', code: '1' }
         ];
 
         this.customerYear = [
-            {name: '2020', code: '0'},
-            {name: '2019', code: '1'}
+            { name: '2020', code: '0' },
+            { name: '2019', code: '1' }
         ];
 
         this.revenueMonth = [
-            {name: 'January - July 2021', code: '0'},
-            {name: 'August - December 2020', code: '1'}
+            { name: 'January - July 2021', code: '0' },
+            { name: 'August - December 2020', code: '1' }
         ];
     }
 
@@ -678,21 +697,21 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         }
     }
 
-    updateChartOptions(){
-        if  (this.config.dark)
+    updateChartOptions() {
+        if (this.config.dark)
             this.applyDarkTheme();
         else
             this.applyLightTheme();
     }
 
-    applyLightTheme(){
+    applyLightTheme() {
         this.visitorChartOptions = {
             plugins: {
                 legend: {
                     position: 'top',
                     align: 'end',
-                    labels:{
-                        color:'#44486D'
+                    labels: {
+                        color: '#44486D'
                     }
                 },
             },
@@ -702,8 +721,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
             },
             scales: {
                 y: {
-                    ticks:{
-                        color:'#44486D'
+                    ticks: {
+                        color: '#44486D'
                     },
                     min: 500,
                     max: 900
@@ -713,8 +732,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                     }
                 },
                 x: {
-                    ticks:{
-                        color:'#44486D'
+                    ticks: {
+                        color: '#44486D'
                     },
                     barPercentage: 0.5,
                     grid: {
@@ -747,7 +766,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                 mode: 'index'
             },
             scales: {
-                x:{
+                x: {
                     ticks: {
                         color: '#44486D'
                     },
@@ -780,8 +799,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                     ticks: {
                         color: '#44486D'
                     },
-                    grid : {
-                        display : false
+                    grid: {
+                        display: false
                     }
                 }
             },
@@ -789,14 +808,14 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
 
     }
 
-    applyDarkTheme(){
+    applyDarkTheme() {
         this.visitorChartOptions = {
             plugins: {
                 legend: {
                     position: 'top',
                     align: 'end',
-                    labels:{
-                        color:'#ebedef'
+                    labels: {
+                        color: '#ebedef'
                     }
                 },
             },
@@ -806,8 +825,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
             },
             scales: {
                 y: {
-                    ticks:{
-                        color:'#ebedef'
+                    ticks: {
+                        color: '#ebedef'
                     },
                     min: 500,
                     max: 900
@@ -817,8 +836,8 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                     }
                 },
                 x: {
-                    ticks:{
-                        color:'#ebedef'
+                    ticks: {
+                        color: '#ebedef'
                     },
                     barPercentage: 0.5,
                     grid: {
@@ -851,7 +870,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                 mode: 'index'
             },
             scales: {
-                x:{
+                x: {
                     ticks: {
                         color: '#ebedef'
                     },
@@ -884,16 +903,16 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
                     ticks: {
                         color: '#ebedef'
                     },
-                    grid : {
-                        display : false
+                    grid: {
+                        display: false
                     }
                 }
             },
         };
     }
 
-    ngOnDestroy(){
-        if(this.subscription){
+    ngOnDestroy() {
+        if (this.subscription) {
             this.subscription.unsubscribe();
         }
     }

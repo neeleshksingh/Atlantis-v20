@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import {AppBreadcrumbService} from '../app.breadcrumb.service';
+import { AppBreadcrumbService } from '../app.breadcrumb.service';
+import { SharedModule } from '../shared.module';
 
 @Component({
     templateUrl: './app.help.component.html',
+    standalone: true,
+    imports: [SharedModule]
 })
 export class AppHelpComponent {
     text: any;
