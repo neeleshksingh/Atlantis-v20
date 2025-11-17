@@ -13,11 +13,112 @@
 @import "assets/demo/flags/flags.css";
 @import "assets/demo/documentation.scss";
 
+/* Safari/iOS friendly scrolling layout fixes */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Fix for iOS Safari viewport height issues */
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+body {
+    /* Safari/iOS friendly positioning */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+    overflow: hidden;
+    /* Prevent iOS Safari bounce scrolling */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+}
+
+/* Layout wrapper should take full height and handle scrolling */
+.layout-wrapper {
+    height: 100vh;
+    height: -webkit-fill-available;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Main layout should handle the scrolling */
+.layout-main {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0; /* Important for Safari flexbox */
+}
+
+/* Main content area should be scrollable with iOS momentum */
+.layout-main-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px;
+    position: relative;
+    /* Enable momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent overscroll behavior */
+    overscroll-behavior: contain;
+    /* Fix for iOS Safari scrolling issues */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* iOS Safari specific styles */
+    .layout-wrapper {
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+
+    .layout-main-content {
+        /* Improve scrolling performance on iOS */
+        will-change: scroll-position;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 /* Custom layout integration with PrimeNG 20 dark mode */
 body.p-dark,
 html.p-dark body {
     background: linear-gradient(180deg, #2e323f 0%, #0a061a 100%) !important;
     color: #ffffff !important;
+    /* Use scroll instead of fixed for better mobile compatibility */
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/* Safari specific background fix */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    body.p-dark,
+    html.p-dark body {
+        background-attachment: scroll !important;
+    }
 }
 
 /* Ensure layout components adapt to PrimeNG 20 dark mode */
@@ -52,4 +153,148 @@ html.p-dark body {
 .p-dark .layout-menu-wrapper .layout-menu li.active-menuitem > a {
     background-color: rgba(255, 255, 255, 0.05);
     color: #0f8bfd;
+}
+
+/* Mobile responsive table styles */
+.p-datatable .p-column-title {
+    display: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 0.25rem;
+}
+
+/* Mobile styles for table responsiveness */
+@media screen and (max-width: 960px) {
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tfoot > tr > td {
+        display: none !important;
+    }
+
+    .p-datatable .p-datatable-tbody > tr {
+        display: block !important;
+        border: 1px solid var(--surface-border);
+        padding: 0;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: var(--surface-card);
+        overflow: hidden;
+        width: 100% !important;
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td {
+        display: block !important;
+        width: 100% !important;
+        border: 0 none !important;
+        padding: 0.75rem 1rem !important;
+        border-bottom: 1px solid var(--surface-border) !important;
+        text-align: left !important;
+        box-sizing: border-box;
+        min-width: unset !important;
+        max-width: none !important;
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td:first-child {
+        padding-top: 1.5rem !important;
+        border-bottom: 1px solid var(--surface-border) !important;
+        text-align: center !important;
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td:last-child {
+        border-bottom: none !important;
+        padding-bottom: 1.5rem !important;
+        text-align: center !important;
+    }
+
+    .p-datatable .p-column-title {
+        display: block !important;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td .p-column-title + * {
+        margin-top: 0.25rem;
+        width: 100%;
+    }
+
+    /* Better alignment for images */
+    .p-datatable .p-datatable-tbody > tr > td img {
+        display: block;
+        margin: 0.5rem auto;
+        max-width: 120px;
+        height: auto;
+    }
+
+    /* Better alignment for ratings */
+    .p-datatable .p-datatable-tbody > tr > td p-rating {
+        display: block;
+        width: 100%;
+    }
+
+    /* Better alignment for badges */
+    .p-datatable .p-datatable-tbody > tr > td .product-badge {
+        display: inline-block;
+        margin-top: 0.25rem;
+    }
+
+    /* Better alignment for action buttons */
+    .p-datatable .p-datatable-tbody > tr > td .flex {
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    /* Special styling for checkbox column */
+    .p-datatable .p-datatable-tbody > tr > td:first-child .p-checkbox,
+    .p-datatable .p-datatable-tbody > tr > td:first-child p-tableCheckbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Hide column title for checkbox column */
+    .p-datatable .p-datatable-tbody > tr > td:first-child .p-column-title {
+        display: none !important;
+    }
+
+    /* Responsive table wrapper to prevent horizontal scroll */
+    .p-datatable-wrapper {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* Ensure table takes full width */
+    .p-datatable .p-datatable-table {
+        width: 100% !important;
+        table-layout: auto !important;
+    }
+
+    /* Price formatting */
+    .p-datatable .p-datatable-tbody > tr > td:nth-child(5) {
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+
+    /* Force all content to take full width */
+    .p-datatable .p-datatable-tbody > tr > td > *:not(.p-column-title) {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Specific fixes for PrimeNG components */
+    .p-datatable .p-datatable-tbody > tr > td p-rating .p-rating {
+        width: 100% !important;
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td p-tableCheckbox .p-checkbox {
+        margin: 0 auto !important;
+    }
 }
