@@ -1,15 +1,18 @@
-import {Component, Input, OnInit, ChangeDetectorRef, OnDestroy} from '@angular/core';
-import {Router, NavigationEnd} from '@angular/router';
-import {trigger, state, style, transition, animate} from '@angular/animations';
-import {Subscription} from 'rxjs';
-import {filter} from 'rxjs/operators';
-import {MenuService} from './app.menu.service';
-import {AppMainComponent} from './app.main.component';
+import { Component, Input, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { MenuService } from './app.menu.service';
+import { AppMainComponent } from './app.main.component';
+import { SharedModule } from './shared.module';
 
 @Component({
     /* tslint:disable:component-selector */
     selector: '[app-menuitem]',
     /* tslint:enable:component-selector */
+    standalone: true,
+    imports: [SharedModule],
     template: `
         <ng-container>
             <div *ngIf="root && item.visible !== false" class="layout-menuitem-root-text">{{item.label}}</div>
@@ -68,7 +71,7 @@ import {AppMainComponent} from './app.main.component';
             transition('hiddenAnimated => visibleAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
             transition('void => visibleAnimated, visibleAnimated => void', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
-    ]
+    ],
 })
 export class AppMenuitemComponent implements OnInit, OnDestroy {
 
@@ -145,7 +148,7 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
 
         // execute command
         if (this.item.command) {
-            this.item.command({originalEvent: event, item: this.item});
+            this.item.command({ originalEvent: event, item: this.item });
         }
 
         // toggle active state
@@ -164,7 +167,7 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
             }
 
             // reset horizontal menu
-            if ((this.app.isSlim() || this.app.isHorizontal()) && !this.app.isMobile()){
+            if ((this.app.isSlim() || this.app.isHorizontal()) && !this.app.isMobile()) {
                 this.menuService.reset();
                 this.app.menuHoverActive = false;
             }

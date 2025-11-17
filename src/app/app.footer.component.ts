@@ -13,6 +13,7 @@ import { SharedModule } from './shared.module';
             <span class="copyright">&#169; Your Organization - 2021</span>
         </div>
     `,
+    standalone: true
 })
 export class AppFooterComponent {
     constructor(public app: AppComponent) { }

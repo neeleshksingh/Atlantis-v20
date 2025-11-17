@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
-import {AppComponent} from './app.component';
-import {AppMainComponent} from './app.main.component';
+import { Component } from '@angular/core';
+import { AppComponent } from './app.component';
+import { AppMainComponent } from './app.main.component';
+import { SharedModule } from './shared.module';
+import { AppMenuComponent } from './app.menu.component';
 
 @Component({
     selector: 'app-topbar',
@@ -67,10 +69,12 @@ import {AppMainComponent} from './app.main.component';
                 </ul>
             </div>
         </div>
-    `
+    `,
+    imports: [SharedModule, AppMenuComponent],
+    standalone: true
 })
 export class AppTopbarComponent {
 
-    constructor(public app: AppComponent, public appMain: AppMainComponent) {}
+    constructor(public app: AppComponent, public appMain: AppMainComponent) { }
 
 }

@@ -7,10 +7,22 @@ import { AppBreadcrumbComponent } from "./app.breadcrumb.component";
 import { AppFooterComponent } from "./app.footer.component";
 import { AppRightMenuComponent } from "./app.rightmenu.component";
 import { AppConfigComponent } from "./app.config.component";
+import { AppTopbarComponent } from './app.topbar.component';
+import { AppMenuComponent } from './app.menu.component';
 
 @Component({
     selector: 'app-main',
-    templateUrl: './app.main.component.html',
+    templateUrl: './app.main.component.html', 
+    imports: [
+        SharedModule,
+        AppBreadcrumbComponent,
+        AppFooterComponent,
+        AppRightMenuComponent,
+        AppConfigComponent,
+        AppTopbarComponent,
+        AppMenuComponent
+    ],
+    standalone: true
 })
 export class AppMainComponent {
     overlayMenuActive: boolean;

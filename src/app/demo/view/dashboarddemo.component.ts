@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EventService } from '../service/eventservice';
 import { PrimeIcons } from 'primeng/api';
 import { Customer } from '../domain/customer';
-import { CustomerService } from '../service/customerservice';
 import { AppBreadcrumbService } from '../../app.breadcrumb.service';
 import { AppConfig } from '../domain/appconfig';
 import { ConfigService } from '../service/app.config.service';
@@ -92,7 +90,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
 
     customerCarousel: any[];
 
-    constructor(private customerService: CustomerService, private eventService: EventService, private breadcrumbService: AppBreadcrumbService, public configService: ConfigService) {
+    constructor( private breadcrumbService: AppBreadcrumbService, public configService: ConfigService) {
         this.breadcrumbService.setItems([
             { label: 'Dashboard' },
             { label: 'Sales Dashboard', routerLink: ['/'] },
@@ -106,22 +104,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.customerService.getCustomersLarge().then(customers => {
-            this.customersTable = customers;
-            // @ts-ignore
-            this.customersTable.forEach(customer => customer.date = new Date(customer.date));
-        });
-        this.customerService.getCustomersLarge().then(customers => {
-            this.customersTable1 = customers;
-            // @ts-ignore
-            this.customersTable1.forEach(customer => customer.date = new Date(customer.date));
-        });
-        this.customerService.getCustomersMixed().then(customers => {
-            this.customersTable2 = customers;
-            // @ts-ignore
-            this.customersTable2.forEach(customer => customer.date = new Date(customer.date));
-        });
-
+        
         this.visitorChart = {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
             datasets: [

@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import { AppInlineMenuComponent } from "./app.inlinemenu.component";
+import { AppMenuitemComponent } from './app.menuitem.component';
 import { SharedModule } from './shared.module';
 
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html',
-    imports: [SharedModule, AppInlineMenuComponent],
+    imports: [SharedModule, AppInlineMenuComponent, AppMenuitemComponent],
     standalone: true
 })
 export class AppMenuComponent implements OnInit {

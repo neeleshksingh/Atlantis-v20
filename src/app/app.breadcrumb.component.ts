@@ -8,6 +8,8 @@ import { SharedModule } from './shared.module';
 @Component({
     selector: 'app-breadcrumb',
     templateUrl: './app.breadcrumb.component.html',
+    imports: [SharedModule],
+    standalone: true
 })
 export class AppBreadcrumbComponent implements OnDestroy {
 

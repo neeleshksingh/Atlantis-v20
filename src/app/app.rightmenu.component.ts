@@ -5,6 +5,8 @@ import { SharedModule } from './shared.module';
 @Component({
     selector: 'app-rightmenu',
     templateUrl: './app.rightmenu.component.html',
+    standalone: true,
+    imports: [SharedModule]
 })
 export class AppRightMenuComponent {
     date: Date;
