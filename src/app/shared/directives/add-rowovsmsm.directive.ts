@@ -2,7 +2,8 @@ import { Directive, Input, HostListener } from '@angular/core';
 import { Table } from 'primeng/table';
 
 @Directive({
-  selector: '[pAddRowOVSMSM]'
+    selector: '[pAddRowOVSMSM]',
+    standalone: false
 })
 export class AddRowOVSMSMDirective {
   @Input() table1: Table = {} as Table;

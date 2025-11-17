@@ -12,7 +12,7 @@ import { AppMenuComponent } from './app.menu.component';
 
 @Component({
     selector: 'app-main',
-    templateUrl: './app.main.component.html', 
+    templateUrl: './app.main.component.html',
     imports: [
         SharedModule,
         AppBreadcrumbComponent,
@@ -21,8 +21,7 @@ import { AppMenuComponent } from './app.menu.component';
         AppConfigComponent,
         AppTopbarComponent,
         AppMenuComponent
-    ],
-    standalone: true
+    ]
 })
 export class AppMainComponent {
     overlayMenuActive: boolean;

@@ -68,8 +68,7 @@ import { SharedModule } from './shared.module';
             </div>
         </div>
     `,
-    imports: [SharedModule],
-    standalone: true
+    imports: [SharedModule]
 })
 export class AppConfigComponent implements OnInit {
 

@@ -4,11 +4,10 @@ import { ProgressBarService } from '../../services/common/progress-bar.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-progress-bar',
-  standalone: true,
-  imports: [SharedModule],
-  templateUrl: './progress-bar.component.html',
-  styleUrl: './progress-bar.component.scss'
+    selector: 'app-progress-bar',
+    imports: [SharedModule],
+    templateUrl: './progress-bar.component.html',
+    styleUrl: './progress-bar.component.scss'
 })
 export class ProgressBarComponent {
   showProgress = false;

@@ -46,7 +46,6 @@ import { SharedModule } from '../shared.module';
             }
         }       
     `],
-    standalone: true,
     imports: [SharedModule]
 })
 export class AppTimelineDemoComponent implements OnInit {

@@ -10,8 +10,6 @@ import { SharedModule } from './shared.module';
 @Component({
     /* tslint:disable:component-selector */
     selector: '[app-menuitem]',
-    /* tslint:enable:component-selector */
-    standalone: true,
     imports: [SharedModule],
     template: `
         <ng-container>
@@ -71,7 +69,7 @@ import { SharedModule } from './shared.module';
             transition('hiddenAnimated => visibleAnimated', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
             transition('void => visibleAnimated, visibleAnimated => void', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
-    ],
+    ]
 })
 export class AppMenuitemComponent implements OnInit, OnDestroy {
 

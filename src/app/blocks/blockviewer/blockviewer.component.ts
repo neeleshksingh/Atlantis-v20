@@ -7,8 +7,8 @@ enum BlockView {
 }
 
 @Component({
-  selector: 'block-viewer',
-  template: `
+    selector: 'block-viewer',
+    template: `
     <div class="block-section">
         <div class="block-header">
             <span class="block-title">
@@ -36,9 +36,8 @@ enum BlockView {
         </div>
     </div>
   `,
-  styleUrls: ['./blockviewer.component.scss'],
-  standalone: true,
-  imports: [SharedModule]
+    styleUrls: ['./blockviewer.component.scss'],
+    imports: [SharedModule]
 })
 export class BlockViewer {
 

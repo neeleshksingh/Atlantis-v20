@@ -5,7 +5,6 @@ import { SharedModule } from 'src/app/shared.module';
 @Component({
     templateUrl: './menus.component.html',
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [SharedModule]
 })
 export class MenusComponent implements OnInit {

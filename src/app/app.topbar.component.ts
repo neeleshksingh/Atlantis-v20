@@ -70,8 +70,7 @@ import { AppMenuComponent } from './app.menu.component';
             </div>
         </div>
     `,
-    imports: [SharedModule, AppMenuComponent],
-    standalone: true
+    imports: [SharedModule, AppMenuComponent]
 })
 export class AppTopbarComponent {
 

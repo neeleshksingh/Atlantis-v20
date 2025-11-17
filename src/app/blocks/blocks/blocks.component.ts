@@ -5,7 +5,6 @@ import { BlockViewer } from "../blockviewer/blockviewer.component";
 
 @Component({
     templateUrl: './blocks.component.html',
-    standalone: true,
     imports: [SharedModule, BlockViewer]
 })
 export class BlocksComponent {
