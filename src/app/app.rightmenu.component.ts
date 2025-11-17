@@ -9,7 +9,7 @@ import { SharedModule } from './shared.module';
     imports: [SharedModule]
 })
 export class AppRightMenuComponent {
-    date: Date;
+    date: Date = new Date();
 
     constructor(public appMain: AppMainComponent) { }
 }

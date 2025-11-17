@@ -41,7 +41,14 @@ export class AppCrudComponent implements OnInit {
 
     products: Product[] = [];
 
-    product: Product = {};
+    product: Product = {
+        name: '',
+        description: '',
+        category: '',
+        price: 0,
+        quantity: 0,
+        inventoryStatus: ''
+    };
 
     selectedProducts: Product[] = [];
 
@@ -79,7 +86,14 @@ export class AppCrudComponent implements OnInit {
         ];
     }
     openNew() {
-        this.product = {};
+        this.product = {
+            name: '',
+            description: '',
+            category: '',
+            price: 0,
+            quantity: 0,
+            inventoryStatus: ''
+        };
         this.submitted = false;
         this.productDialog = true;
     }

@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, Htt
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ProgressBarService } from 'src/app/global/services/common/progress-bar.service';
+import { ProgressBarService } from '../../global/services/common/progress-bar.service';
 import { MessageService } from 'primeng/api';
 
 @Injectable(

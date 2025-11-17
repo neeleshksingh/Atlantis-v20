@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { SharedModule } from 'src/app/shared.module';
+import { Component, Input, OnInit } from '@angular/core';
+import { SharedModule } from '../../shared.module';
 
 enum BlockView {
   PREVIEW,
@@ -7,8 +7,8 @@ enum BlockView {
 }
 
 @Component({
-    selector: 'block-viewer',
-    template: `
+  selector: 'block-viewer',
+  template: `
     <div class="block-section">
         <div class="block-header">
             <span class="block-title">
@@ -30,24 +30,22 @@ enum BlockView {
                 <ng-content></ng-content>
             </div>
             <div *ngIf="blockView == BlockView.CODE">
-                <app-code lang="markup" ngPreserveWhitespaces>{{code}}
-                </app-code>
+                <pre><code>{{code}}</code></pre>
             </div>
         </div>
     </div>
   `,
-    styleUrls: ['./blockviewer.component.scss'],
-    imports: [SharedModule]
+  styleUrls: ['./blockviewer.component.scss'],
+  imports: [SharedModule]
 })
-export class BlockViewer {
+export class BlockViewer implements OnInit {
+  @Input() header: string = '';
 
-  @Input() header: string;
+  @Input() code: string = '';
 
-  @Input() code: string;
+  @Input() containerClass: string = '';
 
-  @Input() containerClass: string;
-
-  @Input() previewStyle: string;
+  @Input() previewStyle: any = {};
 
   @Input() free: boolean = true;
 
@@ -56,6 +54,10 @@ export class BlockViewer {
   BlockView = BlockView;
 
   blockView: BlockView = BlockView.PREVIEW;
+
+  ngOnInit() {
+    // Initialization logic if needed
+  }
 
   activateView(event: Event, blockView: BlockView) {
 

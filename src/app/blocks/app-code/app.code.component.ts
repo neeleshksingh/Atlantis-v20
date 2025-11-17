@@ -13,7 +13,7 @@ export class AppCodeComponent implements AfterViewInit {
 
     @Input() lang = 'markup';
 
-    @ViewChild('code') codeViewChild: ElementRef;
+    @ViewChild('code') codeViewChild!: ElementRef;
 
     constructor(public el: ElementRef) { }
 

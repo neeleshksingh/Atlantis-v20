@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { AppBreadcrumbService } from './app.breadcrumb.service';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
-import {AppMainComponent} from './app.main.component';
+import { AppMainComponent } from './app.main.component';
 import { SharedModule } from './shared.module';
 
 @Component({
@@ -15,11 +15,11 @@ export class AppBreadcrumbComponent implements OnDestroy {
 
     subscription: Subscription;
 
-    items: MenuItem[];
+    items: MenuItem[] = [];
 
     home: MenuItem;
 
-    search: string;
+    search: string = '';
 
     constructor(public breadcrumbService: AppBreadcrumbService, public appMain: AppMainComponent) {
         this.subscription = breadcrumbService.itemsHandler.subscribe(response => {

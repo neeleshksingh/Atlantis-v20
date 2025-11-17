@@ -1,34 +1,37 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProgressBarService {
-    private count = 0;
-    private progressBar$ = new BehaviorSubject<string>('stop');
+    private isLoadingSubject = new BehaviorSubject<boolean>(false);
+    public isLoading$ = this.isLoadingSubject.asObservable();
+    private requestCount = 0;
 
-    constructor() { }
+    show() {
+        this.isLoadingSubject.next(true);
+    }
 
-    getProgressBarObserver(): Observable<string> {
-        return this.progressBar$.asObservable();
+    hide() {
+        this.isLoadingSubject.next(false);
     }
 
     requestStarted() {
-        this.count++;
-        if (this.count === 1) {
-            this.progressBar$.next('start');
-        }
+        this.requestCount++;
+        this.show();
     }
 
     requestEnded() {
-        if (this.count === 0 || --this.count === 0) {
-            this.progressBar$.next('stop');
+        this.requestCount--;
+        if (this.requestCount <= 0) {
+            this.requestCount = 0;
+            this.hide();
         }
     }
 
     resetProgressBar() {
-        this.count = 0;
-        this.progressBar$.next('stop');
+        this.requestCount = 0;
+        this.hide();
     }
 }

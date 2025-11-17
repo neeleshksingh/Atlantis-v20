@@ -17,41 +17,41 @@ import { AppMenuComponent } from "./app.menu.component";
 
 })
 export class AppMainComponent {
-    overlayMenuActive: boolean;
+    overlayMenuActive: boolean = false;
 
     staticMenuDesktopInactive = false;
 
-    staticMenuMobileActive: boolean;
+    staticMenuMobileActive: boolean = false;
 
     sidebarActive = false;
 
     sidebarStatic = false;
 
-    menuClick: boolean;
+    menuClick: boolean = false;
 
     menuHoverActive = false;
 
-    topbarMenuActive: boolean;
+    topbarMenuActive: boolean = false;
 
-    topbarItemClick: boolean;
+    topbarItemClick: boolean = false;
 
-    activeTopbarItem: any;
+    activeTopbarItem: any = null;
 
-    configActive: boolean;
+    configActive: boolean = false;
 
-    configClick: boolean;
+    configClick: boolean = false;
 
-    rightMenuActive: boolean;
+    rightMenuActive: boolean = false;
 
-    rightMenuClick: boolean;
+    rightMenuClick: boolean = false;
 
-    searchActive: boolean;
+    searchActive: boolean = false;
 
-    searchClick: boolean;
+    searchClick: boolean = false;
 
-    activeInlineProfile: boolean;
+    activeInlineProfile: boolean = false;
 
-    pinActive: boolean;
+    pinActive: boolean = false;
 
     constructor(private menuService: MenuService, public app: AppComponent) { }
 
@@ -92,11 +92,11 @@ export class AppMainComponent {
         this.topbarItemClick = false;
     }
 
-    onSidebarClick($event) {
+    onSidebarClick(event: Event) {
         this.menuClick = true;
     }
 
-    onToggleMenu(event) {
+    onToggleMenu(event: Event) {
         this.menuClick = true;
 
         if (this.overlayMenuActive) {
@@ -110,7 +110,7 @@ export class AppMainComponent {
         event.preventDefault();
     }
 
-    onSidebarMouseOver(event) {
+    onSidebarMouseOver(event: Event) {
         if (this.app.menuMode === 'sidebar' && !this.sidebarStatic) {
             this.sidebarActive = this.isDesktop();
             setTimeout(() => {
@@ -119,7 +119,7 @@ export class AppMainComponent {
         }
     }
 
-    onSidebarMouseLeave($event) {
+    onSidebarMouseLeave(event: Event) {
         if (this.app.menuMode === 'sidebar' && !this.sidebarStatic) {
             setTimeout(() => {
                 this.sidebarActive = false;
@@ -128,7 +128,7 @@ export class AppMainComponent {
         }
     }
 
-    onMenuButtonClick(event) {
+    onMenuButtonClick(event: Event) {
         this.menuClick = true;
 
         if (this.isOverlay()) {
@@ -144,7 +144,7 @@ export class AppMainComponent {
         event.preventDefault();
     }
 
-    onTopbarItemClick(event, item) {
+    onTopbarItemClick(event: Event, item: any) {
         this.topbarItemClick = true;
 
         if (this.activeTopbarItem === item) {
@@ -156,15 +156,15 @@ export class AppMainComponent {
         event.preventDefault();
     }
 
-    onTopbarSubItemClick(event) {
+    onTopbarSubItemClick(event: Event) {
         event.preventDefault();
     }
 
-    onRippleChange(event) {
+    onRippleChange(event: any) {
         this.app.ripple = event.checked;
     }
 
-    onConfigClick(event) {
+    onConfigClick(event: Event) {
         this.configClick = true;
     }
 
@@ -173,7 +173,7 @@ export class AppMainComponent {
         this.rightMenuActive = true;
     }
 
-    onRightMenuClick($event) {
+    onRightMenuClick(event: Event) {
         this.rightMenuClick = true;
     }
 

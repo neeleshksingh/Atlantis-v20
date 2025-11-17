@@ -51,9 +51,9 @@ import { SharedModule } from '../shared.module';
 })
 export class AppTimelineDemoComponent implements OnInit {
 
-    customEvents: any[];
+    customEvents: any[] = [];
 
-    horizontalEvents: any[];
+    horizontalEvents: any[] = [];
 
     constructor(private breadcrumbService: AppBreadcrumbService) {
         this.breadcrumbService.setItems([

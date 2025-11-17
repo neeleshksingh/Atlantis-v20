@@ -76,21 +76,21 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
 
     @Input() item: any;
 
-    @Input() index: number;
+    @Input() index: number = 0;
 
-    @Input() root: boolean;
+    @Input() root: boolean = false;
 
-    @Input() parentKey: string;
+    @Input() parentKey: string = '';
 
     active = false;
 
-    hover: boolean;
+    hover: boolean = false;
 
     menuSourceSubscription: Subscription;
 
     menuResetSubscription: Subscription;
 
-    key: string;
+    key: string = '';
 
     constructor(public app: AppMainComponent, public router: Router, private cd: ChangeDetectorRef, private menuService: MenuService) {
         this.menuSourceSubscription = this.menuService.menuSource$.subscribe(key => {

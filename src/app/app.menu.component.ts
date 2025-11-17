@@ -13,7 +13,7 @@ import { SharedModule } from './shared.module';
 })
 export class AppMenuComponent implements OnInit {
 
-    public model: any[];
+    public model: any[] = [];
 
     constructor(public app: AppComponent, public appMain: AppMainComponent) { }
 

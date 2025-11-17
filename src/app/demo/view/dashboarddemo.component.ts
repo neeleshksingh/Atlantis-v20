@@ -5,7 +5,7 @@ import { AppBreadcrumbService } from '../../app.breadcrumb.service';
 import { AppConfig } from '../domain/appconfig';
 import { ConfigService } from '../service/app.config.service';
 import { Subscription } from 'rxjs';
-import { SharedModule } from 'src/app/shared.module';
+import { SharedModule } from '../../shared.module';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -20,7 +20,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
 
     visitorChartOptions: any;
 
-    timelineEvents: any[];
+    timelineEvents: any[] = [];
 
     countryChart: any;
 
@@ -30,13 +30,13 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
 
     revenueChartOptions: any;
 
-    customersTable: Customer[];
+    customersTable: Customer[] = [];
 
-    customersTable1: Customer[];
+    customersTable1: Customer[] = [];
 
-    customersTable2: Customer[];
+    customersTable2: Customer[] = [];
 
-    selectedCustomers1: Customer[];
+    selectedCustomers1: Customer[] = [];
 
     orderYear: any;
 
@@ -88,9 +88,9 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         }
     ];
 
-    customerCarousel: any[];
+    customerCarousel: any[] = [];
 
-    constructor( private breadcrumbService: AppBreadcrumbService, public configService: ConfigService) {
+    constructor(private breadcrumbService: AppBreadcrumbService, public configService: ConfigService) {
         this.breadcrumbService.setItems([
             { label: 'Dashboard' },
             { label: 'Sales Dashboard', routerLink: ['/'] },
@@ -104,7 +104,40 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        
+
+        // Initialize dropdown selections to prevent NG01203 errors
+        this.selectedOrderYear = this.orderYear?.[0];
+        this.selectedRevenueMonth = this.revenueMonth?.[0];
+        this.selectedVisitorYear = this.visitorYear?.[0];
+        this.selectedCustomerYear = this.customerYear?.[0];
+
+        // Initialize dropdown options first
+        this.orderYear = [
+            { name: '2021', code: '0' },
+            { name: '2020', code: '1' }
+        ];
+
+        this.visitorYear = [
+            { name: '2020', code: '0' },
+            { name: '2019', code: '1' }
+        ];
+
+        this.customerYear = [
+            { name: '2020', code: '0' },
+            { name: '2019', code: '1' }
+        ];
+
+        this.revenueMonth = [
+            { name: 'January - July 2021', code: '0' },
+            { name: 'August - December 2020', code: '1' }
+        ];
+
+        // Set initial selections after options are defined
+        this.selectedOrderYear = this.orderYear[0];
+        this.selectedRevenueMonth = this.revenueMonth[0];
+        this.selectedVisitorYear = this.visitorYear[0];
+        this.selectedCustomerYear = this.customerYear[0];
+
         this.visitorChart = {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
             datasets: [
@@ -533,7 +566,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         ];
     }
 
-    changeRevenueChart(event) {
+    changeRevenueChart(event: any) {
         const dataSet1 = [
             [37, 34, 21, 27, 10, 18, 15],
             [31, 27, 30, 37, 23, 29, 20],
@@ -560,7 +593,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         }
     }
 
-    changeVisitorChart(event) {
+    changeVisitorChart(event: any) {
         const dataSet1 = [
             [630, 630, 695, 695, 695, 760, 760, 760, 840, 840, 840, 840],
             [600, 671, 660, 665, 700, 610, 810, 790, 710, 860, 810, 780]
@@ -583,7 +616,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         }
     }
 
-    changeCustomerChart(event) {
+    changeCustomerChart(event: any) {
         const dataSet1 = [
             [10, 25, 48, 35, 54, 70],
             [18, 35, 23, 30, 59, 65],
@@ -672,7 +705,7 @@ export class DashboardDemoComponent implements OnInit, OnDestroy {
         }
     }
 
-    recentSales(event) {
+    recentSales(event: any) {
         if (event.value.code === '0') {
             this.customersTable = this.customersTable1;
         } else {

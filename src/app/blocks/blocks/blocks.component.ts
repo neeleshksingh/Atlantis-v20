@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
+import { SharedModule } from '../../shared.module';
+import { BlockViewer } from '../blockviewer/blockviewer.component';
 import { AppBreadcrumbService } from '../../app.breadcrumb.service';
-import { SharedModule } from 'src/app/shared.module';
-import { BlockViewer } from "../blockviewer/blockviewer.component";
 
 @Component({
+    selector: 'blocks',
     templateUrl: './blocks.component.html',
-    imports: [SharedModule, BlockViewer]
+    imports: [SharedModule, BlockViewer],
+    standalone: true
 })
 export class BlocksComponent {
 

@@ -72,12 +72,12 @@ import { SharedModule } from './shared.module';
     imports: [SharedModule],
     standalone: true
 })
-export class AppConfigComponent implements OnInit {
+export class AppConfigComponent implements OnInit, OnDestroy {
 
-    layoutColors: any[];
-    themeColors: any[];
-    config: AppConfig;
-    subscription: Subscription;
+    layoutColors: any[] = [];
+    themeColors: any[] = [];
+    config: AppConfig = {} as AppConfig;
+    subscription: Subscription = new Subscription();
 
     constructor(public appMain: AppMainComponent, public app: AppComponent, public configService: ConfigService) { }
 
@@ -109,7 +109,13 @@ export class AppConfigComponent implements OnInit {
         ];
     }
 
-    changeColorScheme(scheme) {
+    ngOnDestroy() {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
+
+    changeColorScheme(scheme: string) {
         console.log('Switching to scheme:', scheme);
 
         // Update the app state
@@ -144,9 +150,21 @@ export class AppConfigComponent implements OnInit {
         console.log('Theme applied:', scheme, 'Classes on documentElement:', document.documentElement.classList.toString());
     }
 
-    changeStyleSheetsColor(id, value, from) {
+    changeStyleSheetsColor(id: string, value: string, from: number) {
         const element = document.getElementById(id);
-        const urlTokens = element.getAttribute('href').split('/');
+
+        if (!element) {
+            console.warn(`Element with id '${id}' not found`);
+            return;
+        }
+
+        const href = element.getAttribute('href');
+        if (!href) {
+            console.warn(`Element with id '${id}' has no href attribute`);
+            return;
+        }
+
+        const urlTokens = href.split('/');
 
         if (from === 1) {           // which function invoked this function - change scheme
             urlTokens[urlTokens.length - 1] = value;
@@ -159,7 +177,7 @@ export class AppConfigComponent implements OnInit {
         this.replaceLink(element, newURL);
     }
 
-    changeTheme(theme) {
+    changeTheme(theme: string) {
         const themeLink: HTMLLinkElement = document.getElementById('theme-css') as HTMLLinkElement;
         const href = 'assets/theme/' + theme + '/theme-' + this.app.colorScheme + '.css';
         this.app.theme = theme;
@@ -167,7 +185,7 @@ export class AppConfigComponent implements OnInit {
         this.replaceLink(themeLink, href);
     }
 
-    changeLayout(layout) {
+    changeLayout(layout: string) {
         const layoutLink: HTMLLinkElement = document.getElementById('layout-css') as HTMLLinkElement;
         const href = 'assets/layout/css/' + layout + '/layout-' + this.app.colorScheme + '.css';
         this.app.layout = layout;
@@ -179,26 +197,26 @@ export class AppConfigComponent implements OnInit {
         return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
     }
 
-    replaceLink(linkElement, href) {
+    replaceLink(linkElement: HTMLElement, href: string) {
         if (this.isIE()) {
             linkElement.setAttribute('href', href);
         } else {
             const id = linkElement.getAttribute('id');
-            const cloneLinkElement = linkElement.cloneNode(true);
+            const cloneLinkElement = linkElement.cloneNode(true) as HTMLElement;
 
             cloneLinkElement.setAttribute('href', href);
             cloneLinkElement.setAttribute('id', id + '-clone');
 
-            linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
+            linkElement.parentNode?.insertBefore(cloneLinkElement, linkElement.nextSibling);
 
             cloneLinkElement.addEventListener('load', () => {
                 linkElement.remove();
-                cloneLinkElement.setAttribute('id', id);
+                cloneLinkElement.setAttribute('id', id || '');
             });
         }
     }
 
-    onConfigButtonClick(event) {
+    onConfigButtonClick(event: Event) {
         this.appMain.configActive = !this.appMain.configActive;
         this.appMain.configClick = true;
         event.preventDefault();

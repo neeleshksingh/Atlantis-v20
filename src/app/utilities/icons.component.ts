@@ -11,9 +11,9 @@ import { AppCodeModule } from "../blocks/app-code/app.code.component";
 })
 export class IconsComponent implements OnInit {
 
-    icons: any[];
+    icons: any[] = [];
 
-    filteredIcons: any[];
+    filteredIcons: any[] = [];
 
     constructor(private iconService: IconService, private breadcrumbService: AppBreadcrumbService) {
         this.breadcrumbService.setItems([
@@ -43,14 +43,14 @@ export class IconsComponent implements OnInit {
         });
     }
 
-    onFilter(event: KeyboardEvent): void {
+    onFilter(event: Event) {
         const searchText = (event.target as HTMLInputElement).value;
 
         if (!searchText) {
             this.filteredIcons = this.icons;
         } else {
-            this.filteredIcons = this.icons.filter(it => {
-                return it.icon.tags[0].includes(searchText);
+            this.filteredIcons = this.icons.filter(icon => {
+                return icon.properties.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
             });
         }
     }

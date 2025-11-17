@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     theme = 'blue';
 
-    ripple: boolean;
+    ripple: boolean = true;
 
     colorScheme = 'dark';
 

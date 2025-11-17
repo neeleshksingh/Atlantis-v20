@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
-import { ProgressBarService } from 'src/app/global/services/common/progress-bar.service';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { ProgressBarService } from '../../global/services/common/progress-bar.service';
 
-@Injectable(
-  { providedIn: 'root' }
-)
+@Injectable({
+  providedIn: 'root'
+})
 export class ProgressBarInterceptor implements HttpInterceptor {
   constructor(private progressBarService: ProgressBarService) { }
 
@@ -14,11 +14,7 @@ export class ProgressBarInterceptor implements HttpInterceptor {
     this.progressBarService.requestStarted();
 
     return next.handle(req).pipe(
-      finalize(() => this.progressBarService.requestEnded()),
-      catchError((error) => {
-        this.progressBarService.requestEnded();
-        return throwError(() => error);
-      })
+      finalize(() => this.progressBarService.requestEnded())
     );
   }
 }
