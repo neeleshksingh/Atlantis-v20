@@ -4,7 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { ProgressBarService } from 'src/app/global/services/common/progress-bar.service';
 
-@Injectable()
+@Injectable(
+  { providedIn: 'root' }
+)
 export class ProgressBarInterceptor implements HttpInterceptor {
   constructor(private progressBarService: ProgressBarService) { }
 

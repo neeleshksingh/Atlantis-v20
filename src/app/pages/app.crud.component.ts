@@ -28,7 +28,8 @@ import { SharedModule } from '../shared.module';
 
     `],
     providers: [MessageService, ConfirmationService],
-    imports: [SharedModule]
+    imports: [SharedModule],
+    standalone: true
 })
 export class AppCrudComponent implements OnInit {
 

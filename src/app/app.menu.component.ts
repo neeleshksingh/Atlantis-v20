@@ -8,6 +8,7 @@ import { SharedModule } from './shared.module';
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html',
+    standalone: true,
     imports: [SharedModule, AppInlineMenuComponent, AppMenuitemComponent]
 })
 export class AppMenuComponent implements OnInit {

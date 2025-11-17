@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 
 import { Image } from '../domain/image';
 
-@Injectable()
+@Injectable(
+  { providedIn: 'root' }
+)
 export class PhotoService {
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    getImages() {
+  getImages() {
     return this.http.get<any>('assets/demo/data/photos.json')
       .toPromise()
       .then(res => res.data as Image[])
       .then(data => data);
-    }
+  }
 }

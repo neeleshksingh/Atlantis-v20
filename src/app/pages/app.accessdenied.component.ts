@@ -5,7 +5,8 @@ import { SharedModule } from '../shared.module';
 @Component({
     selector: 'app-accessdenied',
     templateUrl: './app.accessdenied.component.html',
-    imports: [SharedModule]
+    imports: [SharedModule],
+    standalone: true
 })
 export class AppAccessdeniedComponent {
   constructor(public app: AppComponent) { }

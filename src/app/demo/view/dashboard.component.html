@@ -62,7 +62,8 @@
             <div class="card widget-visitor-graph">
                 <div class="card-header">
                     <span>Unique visitor graph</span>
-                    <p-dropdown [options]="visitorYear" [(ngModel)]="selectedVisitorYear" optionLabel="name" (onChange)="changeVisitorChart($event); visitor.refresh()"></p-dropdown>
+                    <p-select [options]="visitorYear" [(ngModel)]="selectedVisitorYear" name="visitorYear"
+                        optionLabel="name" (onChange)="changeVisitorChart($event); visitor.refresh()"></p-select>
                 </div>
 
                 <div class="graph-content grid">
@@ -74,14 +75,16 @@
                     <div class="col-12 md:col-6">
                         <h2>{{avgCustomer}}</h2>
                         <h6>AVG. MRR/CUSTOMER</h6>
-                        <p>The revenue generated per account on a monthly or yearly basis. <a href="#">Learn more</a></p>
+                        <p>The revenue generated per account on a monthly or yearly basis. <a href="#">Learn more</a>
+                        </p>
                     </div>
                 </div>
 
                 <div class="graph">
                     <h6>Revenue</h6>
 
-                    <p-chart #visitor type="bar" [data]="visitorChart" [options]="visitorChartOptions" id="visitor-chart"></p-chart>
+                    <p-chart #visitor type="bar" [data]="visitorChart" [options]="visitorChartOptions"
+                        id="visitor-chart"></p-chart>
                 </div>
             </div>
         </div>
@@ -122,49 +125,62 @@
                 <div class="country-title">Country distrubutions</div>
                 <div class="country-graph">
                     <div class="flex justify-content-center">
-                        <p-chart type="doughnut" id="country-chart" [data]="countryChart" [options]="countryChartOptions" [style]="{'width': '75%'}"></p-chart>
+                        <p-chart type="doughnut" id="country-chart" [data]="countryChart"
+                            [options]="countryChartOptions" [style]="{'width': '75%'}"></p-chart>
                     </div>
                 </div>
                 <div class="country-content">
                     <ul>
                         <li class="flex justify-content-between align-items-center">
                             <div class="flex justify-content-between align-items-center">
-                                <div class="color" style="background-color: #00D0DE; box-shadow: 0px 0px 10px rgba(0, 208, 222, 0.3);"></div>
+                                <div class="color"
+                                    style="background-color: #00D0DE; box-shadow: 0px 0px 10px rgba(0, 208, 222, 0.3);">
+                                </div>
                                 <span>United States of America</span>
                             </div>
                             <span>25%</span>
                         </li>
                         <li class="flex justify-content-between align-items-center">
                             <div class="flex justify-content-between align-items-center">
-                                <div class="color" style="background-color: #873EFE; box-shadow: 0px 0px 10px rgba(135, 62, 254, 0.3)"></div>
+                                <div class="color"
+                                    style="background-color: #873EFE; box-shadow: 0px 0px 10px rgba(135, 62, 254, 0.3)">
+                                </div>
                                 <span>China</span>
                             </div>
                             <span>20%</span>
                         </li>
                         <li class="flex justify-content-between align-items-center">
                             <div class="flex justify-content-between align-items-center">
-                                <div class="color" style="background-color: #FC6161; box-shadow: 0px 0px 10px rgba(252, 97, 97, 0.3)"></div>
+                                <div class="color"
+                                    style="background-color: #FC6161; box-shadow: 0px 0px 10px rgba(252, 97, 97, 0.3)">
+                                </div>
                                 <span>Japan</span>
                             </div>
                             <span>17%</span>
                         </li>
                         <li class="flex justify-content-between align-items-center">
                             <div class="flex justify-content-between align-items-center">
-                                <div class="color" style="background-color: #EEE500; box-shadow: 0px 0px 10px rgba(238, 229, 0, 0.3)"></div>
+                                <div class="color"
+                                    style="background-color: #EEE500; box-shadow: 0px 0px 10px rgba(238, 229, 0, 0.3)">
+                                </div>
                                 <span>Australia</span>
                             </div>
                             <span>15%</span>
                         </li>
                         <li class="flex justify-content-between align-items-center">
                             <div class="flex justify-content-between align-items-center">
-                                <div class="color" style="background-color: #EC4DBC; box-shadow: 0px 0px 10px rgba(236, 77, 188, 0.3)"></div>
+                                <div class="color"
+                                    style="background-color: #EC4DBC; box-shadow: 0px 0px 10px rgba(236, 77, 188, 0.3)">
+                                </div>
                                 <span>India</span>
                             </div>
                             <span>10%</span>
                         </li>
                         <li class="flex justify-content-between align-items-center">
                             <div class="flex justify-content-between align-items-center">
-                                <div class="color" style="background-color: #0F8BFD; box-shadow: 0px 0px 10px rgba(15, 139, 253, 0.3)"></div>
+                                <div class="color"
+                                    style="background-color: #0F8BFD; box-shadow: 0px 0px 10px rgba(15, 139, 253, 0.3)">
+                                </div>
                                 <span>Rusian Federation</span>
                             </div>
                             <span>8%</span>
@@ -185,11 +201,13 @@
             <div class="card widget-revenue-graph">
                 <div class="card-header">
                     <span>Montly revenue</span>
-                    <p-dropdown [options]="revenueMonth" [(ngModel)]="selectedRevenueMonth" optionLabel="name" (onChange)="changeRevenueChart($event); revenue.refresh()"></p-dropdown>
+                    <p-select [options]="revenueMonth" [(ngModel)]="selectedRevenueMonth" name="revenueMonth"
+                        optionLabel="name" (onChange)="changeRevenueChart($event); revenue.refresh()"></p-select>
                 </div>
 
                 <div class="graph">
-                    <p-chart #revenue type="line" id="revenue-chart" [data]="revenueChart" [options]="revenueChartOptions"></p-chart>
+                    <p-chart #revenue type="line" id="revenue-chart" [data]="revenueChart"
+                        [options]="revenueChartOptions"></p-chart>
                 </div>
             </div>
         </div>
@@ -198,10 +216,11 @@
             <div class="card widget-table">
                 <div class="card-header">
                     <span>Yearly win</span>
-                    <p-dropdown [options]="orderYear" [(ngModel)]="selectedOrderYear" optionLabel="name" (onChange)="recentSales($event)"></p-dropdown>
+                    <p-select [options]="orderYear" [(ngModel)]="selectedOrderYear" name="orderYear" optionLabel="name"
+                        (onChange)="recentSales($event)"></p-select>
                 </div>
                 <p-table #dt [value]="customersTable" [(selection)]="selectedCustomers1" dataKey="id"
-                         styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true">
+                    styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true">
                     <ng-template pTemplate="header">
                         <tr>
                             <th pSortableColumn="representative.name">
@@ -236,13 +255,15 @@
                             <td>
                                 <span class="p-column-title">Representative</span>
                                 <img [alt]="customer.representative.name"
-                                     src="assets/demo/images/avatar/{{customer.representative.image}}" width="24"
-                                     style="vertical-align: middle"/>
-                                <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.representative.name}}</span>
+                                    src="assets/demo/images/avatar/{{customer.representative.image}}" width="24"
+                                    style="vertical-align: middle" />
+                                <span class="image-text"
+                                    style="margin-left: .5em;vertical-align: middle">{{customer.representative.name}}</span>
                             </td>
                             <td>
                                 <span class="p-column-title">Country</span>
-                                <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.country.name}}</span>
+                                <span class="image-text"
+                                    style="margin-left: .5em;vertical-align: middle">{{customer.country.name}}</span>
                             </td>
                             <td>
                                 <span class="p-column-title">Date</span>
@@ -272,35 +293,40 @@
                 <div class="content">
                     <ul>
                         <li class="person-item">
-                            <p-avatar image="assets/layout/images/dashboard/ann.png" pBadge value="1" styleClass="mr-2"></p-avatar>
+                            <p-avatar image="assets/layout/images/dashboard/ann.png" pBadge value="1"
+                                styleClass="mr-2"></p-avatar>
                             <div class="person-info">
                                 <div class="amount">$94,815</div>
                                 <div class="name">Ann Vaccaro</div>
                             </div>
                         </li>
                         <li class="person-item">
-                            <p-avatar image="assets/layout/images/dashboard/miracle.png" pBadge value="2" styleClass="mr-2"></p-avatar>
+                            <p-avatar image="assets/layout/images/dashboard/miracle.png" pBadge value="2"
+                                styleClass="mr-2"></p-avatar>
                             <div class="person-info">
                                 <div class="amount">$78,985</div>
                                 <div class="name">Miracle Aminoff</div>
                             </div>
                         </li>
                         <li class="person-item">
-                            <p-avatar image="assets/layout/images/dashboard/kaylynn.png" pBadge value="3" styleClass="mr-2"></p-avatar>
+                            <p-avatar image="assets/layout/images/dashboard/kaylynn.png" pBadge value="3"
+                                styleClass="mr-2"></p-avatar>
                             <div class="person-info">
                                 <div class="amount">$53,611</div>
                                 <div class="name">Kaylynn Geidt</div>
                             </div>
                         </li>
                         <li class="person-item">
-                            <p-avatar image="assets/layout/images/dashboard/angel.png" pBadge value="4" styleClass="mr-2"></p-avatar>
+                            <p-avatar image="assets/layout/images/dashboard/angel.png" pBadge value="4"
+                                styleClass="mr-2"></p-avatar>
                             <div class="person-info">
                                 <div class="amount">$25,338</div>
                                 <div class="name">Angel Rosser</div>
                             </div>
                         </li>
                         <li class="person-item">
-                            <p-avatar image="assets/layout/images/dashboard/cristofer.png" pBadge value="5" styleClass="mr-2"></p-avatar>
+                            <p-avatar image="assets/layout/images/dashboard/cristofer.png" pBadge value="5"
+                                styleClass="mr-2"></p-avatar>
                             <div class="person-info">
                                 <div class="amount">$15,989</div>
                                 <div class="name">Cristofer Mango</div>
@@ -316,7 +342,8 @@
                 <div class="header">
                     <div class="title">
                         <span>Weekly new customers</span>
-                        <p-dropdown [options]="customerYear" [(ngModel)]="selectedCustomerYear" optionLabel="name" (onChange)="changeCustomerChart($event); customer.refresh()"></p-dropdown>
+                        <p-select [options]="customerYear" [(ngModel)]="selectedCustomerYear" name="customerYear"
+                            optionLabel="name" (onChange)="changeCustomerChart($event); customer.refresh()"></p-select>
                     </div>
                     <p class="subtitle">Number of new customer are listed by weekly</p>
                 </div>
@@ -338,7 +365,8 @@
                     </div>
                 </div>
 
-                <p-chart #customer type="bar" id="customer-chart" [data]="customerChart" [options]="customerChartOptions"></p-chart>
+                <p-chart #customer type="bar" id="customer-chart" [data]="customerChart"
+                    [options]="customerChartOptions"></p-chart>
             </div>
         </div>
 
@@ -349,7 +377,7 @@
                 </div>
                 <div class="content">
                     <h3>1232 Users</h3>
-                    <span class="rate">%3.5 <i class="pi pi-arrow-up"></i><span>  than last week</span></span>
+                    <span class="rate">%3.5 <i class="pi pi-arrow-up"></i><span> than last week</span></span>
                 </div>
                 <div class="values">
                     <div class="item">
@@ -393,12 +421,14 @@
 
         <div class="col-12 widget-customer-carousel">
             <h6>Top customers</h6>
-            <p-carousel [value]="customerCarousel" [numVisible]="4" [numScroll]="1" [circular]="true" [responsiveOptions]="carouselResponsiveOptions">
+            <p-carousel [value]="customerCarousel" [numVisible]="4" [numScroll]="1" [circular]="true"
+                [responsiveOptions]="carouselResponsiveOptions">
                 <ng-template let-customer pTemplate="item">
                     <div class="card mr-4">
                         <div class="customer-item-content">
                             <div class="mb-6">
-                                <img src="assets/layout/images/dashboard/{{customer.image}}.png" [alt]="customer.image" class="product-image" />
+                                <img src="assets/layout/images/dashboard/{{customer.image}}.png" [alt]="customer.image"
+                                    class="product-image" />
                             </div>
                             <div>
                                 <h4>{{customer.user}}</h4>

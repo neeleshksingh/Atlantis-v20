@@ -5,6 +5,7 @@ import { AppConfig } from './demo/domain/appconfig';
 import { ConfigService } from './demo/service/app.config.service';
 import { Subscription } from 'rxjs';
 import { SharedModule } from './shared.module';
+
 @Component({
     selector: 'app-config',
     template: `
@@ -68,16 +69,14 @@ import { SharedModule } from './shared.module';
             </div>
         </div>
     `,
-    imports: [SharedModule]
+    imports: [SharedModule],
+    standalone: true
 })
 export class AppConfigComponent implements OnInit {
 
     layoutColors: any[];
-
     themeColors: any[];
-
     config: AppConfig;
-
     subscription: Subscription;
 
     constructor(public appMain: AppMainComponent, public app: AppComponent, public configService: ConfigService) { }
@@ -111,11 +110,38 @@ export class AppConfigComponent implements OnInit {
     }
 
     changeColorScheme(scheme) {
-        this.changeStyleSheetsColor('layout-css', 'layout-' + scheme + '.css', 1);
-        this.changeStyleSheetsColor('theme-css', 'theme-' + scheme + '.css', 1);
+        console.log('Switching to scheme:', scheme);
 
+        // Update the app state
         this.app.colorScheme = scheme;
         this.configService.updateConfig({ ...this.config, ...{ dark: scheme === 'dark' } });
+
+        // Apply PrimeNG theme classes immediately
+        this.applyPrimeNGTheme(scheme);
+
+        // Also switch layout CSS files for custom components
+        this.changeStyleSheetsColor('layout-css', 'layout-' + scheme + '.css', 1);
+        this.changeStyleSheetsColor('theme-css', 'theme-' + scheme + '.css', 1);
+    }
+
+    applyPrimeNGTheme(scheme: string) {
+        const isDark = scheme === 'dark';
+
+        // Force remove existing classes first
+        document.documentElement.classList.remove('p-dark');
+        document.body.classList.remove('p-dark');
+
+        // Apply new theme classes
+        if (isDark) {
+            document.documentElement.classList.add('p-dark');
+            document.body.classList.add('p-dark');
+        }
+
+        // Ensure the app component is also updated
+        this.app.colorScheme = scheme;
+        this.app.applyTheme();
+
+        console.log('Theme applied:', scheme, 'Classes on documentElement:', document.documentElement.classList.toString());
     }
 
     changeStyleSheetsColor(id, value, from) {

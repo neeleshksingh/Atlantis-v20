@@ -6,7 +6,8 @@ import { AppCodeModule } from "../blocks/app-code/app.code.component";
 
 @Component({
     templateUrl: './icons.component.html',
-    imports: [SharedModule, AppCodeModule]
+    imports: [SharedModule, AppCodeModule],
+    standalone: true
 })
 export class IconsComponent implements OnInit {
 

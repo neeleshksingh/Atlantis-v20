@@ -10,6 +10,7 @@ import { SharedModule } from './shared.module';
 @Component({
     /* tslint:disable:component-selector */
     selector: '[app-menuitem]',
+    standalone: true,
     imports: [SharedModule],
     template: `
         <ng-container>

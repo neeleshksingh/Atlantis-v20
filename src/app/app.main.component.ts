@@ -1,27 +1,20 @@
 import { Component } from '@angular/core';
 import { MenuService } from './app.menu.service';
-import { PrimeNGConfig } from 'primeng/api';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared.module';
 import { AppBreadcrumbComponent } from "./app.breadcrumb.component";
 import { AppFooterComponent } from "./app.footer.component";
 import { AppRightMenuComponent } from "./app.rightmenu.component";
 import { AppConfigComponent } from "./app.config.component";
-import { AppTopbarComponent } from './app.topbar.component';
-import { AppMenuComponent } from './app.menu.component';
+import { AppTopbarComponent } from "./app.topbar.component";
+import { AppMenuComponent } from "./app.menu.component";
 
 @Component({
     selector: 'app-main',
     templateUrl: './app.main.component.html',
-    imports: [
-        SharedModule,
-        AppBreadcrumbComponent,
-        AppFooterComponent,
-        AppRightMenuComponent,
-        AppConfigComponent,
-        AppTopbarComponent,
-        AppMenuComponent
-    ]
+    standalone: true,
+    imports: [SharedModule, AppBreadcrumbComponent, AppFooterComponent, AppRightMenuComponent, AppConfigComponent, AppTopbarComponent, AppMenuComponent],
+
 })
 export class AppMainComponent {
     overlayMenuActive: boolean;
@@ -60,7 +53,7 @@ export class AppMainComponent {
 
     pinActive: boolean;
 
-    constructor(private menuService: MenuService, private primengConfig: PrimeNGConfig, public app: AppComponent) { }
+    constructor(private menuService: MenuService, public app: AppComponent) { }
 
     onLayoutClick() {
         if (!this.topbarItemClick) {
@@ -169,7 +162,6 @@ export class AppMainComponent {
 
     onRippleChange(event) {
         this.app.ripple = event.checked;
-        this.primengConfig.ripple = event.checked;
     }
 
     onConfigClick(event) {

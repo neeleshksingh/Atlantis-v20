@@ -1,4 +1,5 @@
-<div class="layout-rightmenu" [ngClass]="{'layout-rightmenu-active': appMain.rightMenuActive}" (click)="appMain.onRightMenuClick($event)">
+<div class="layout-rightmenu" [ngClass]="{'layout-rightmenu-active': appMain.rightMenuActive}"
+    (click)="appMain.onRightMenuClick($event)">
     <a href="#" (click)="appMain.rightMenuActive=false" class="layout-rightmenu-close">
         <i class="pi pi-times"></i>
     </a>
@@ -24,7 +25,7 @@
         </div>
     </div>
     <div>
-        <p-calendar [(ngModel)]="date" [inline]="true" styleClass="w-full"></p-calendar>
+        <p-datepicker [(ngModel)]="date" name="date" [inline]="true" styleClass="w-full"></p-datepicker>
     </div>
     <div class="daily-plan-wrapper">
         <span class="today-date">14 Sunday, Jun 2020</span>

@@ -6,6 +6,7 @@ import { SharedModule } from './shared.module';
 @Component({
     selector: 'app-inlinemenu',
     templateUrl: './app.inlinemenu.component.html',
+    standalone: true,
     imports: [SharedModule],
     animations: [
         trigger('inline', [

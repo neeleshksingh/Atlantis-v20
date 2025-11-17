@@ -6,7 +6,9 @@ import { Router } from '@angular/router';
 import { ProgressBarService } from 'src/app/global/services/common/progress-bar.service';
 import { MessageService } from 'primeng/api';
 
-@Injectable()
+@Injectable(
+    { providedIn: 'root' }
+)
 export class ErrorInterceptor implements HttpInterceptor {
     constructor(
         private router: Router,

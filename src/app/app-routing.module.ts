@@ -11,7 +11,6 @@ import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
-import {AppHelpComponent} from './pages/app.help.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
 
 @NgModule({
@@ -27,7 +26,6 @@ import {BlocksComponent} from './blocks/blocks/blocks.component';
                     {path: 'pages/calendar', component: AppCalendarComponent},
                     {path: 'pages/timeline', component: AppTimelineDemoComponent},
                     {path: 'pages/invoice', component: AppInvoiceComponent},
-                    {path: 'pages/help', component: AppHelpComponent},
                     {path: 'primeblocks/freeblocks', component: BlocksComponent}
                 ]
             },

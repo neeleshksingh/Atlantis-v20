@@ -9,14 +9,13 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BadgeModule } from 'primeng/badge';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ButtonModule } from 'primeng/button';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePickerModule } from 'primeng/datepicker';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { ChartModule } from 'primeng/chart';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ChipModule } from 'primeng/chip';
-import { ChipsModule } from 'primeng/chips';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ColorPickerModule } from 'primeng/colorpicker';
@@ -24,7 +23,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DataViewModule } from 'primeng/dataview';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
@@ -32,20 +31,18 @@ import { ImageModule } from 'primeng/image';
 import { InplaceModule } from 'primeng/inplace';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
-import { InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { KnobModule } from 'primeng/knob';
 import { ListboxModule } from 'primeng/listbox';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
-import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { OrderListModule } from 'primeng/orderlist';
 import { OrganizationChartModule } from 'primeng/organizationchart';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { PanelMenuModule } from 'primeng/panelmenu';
@@ -58,16 +55,14 @@ import { RippleModule } from 'primeng/ripple';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 import { SkeletonModule } from 'primeng/skeleton';
-import { SlideMenuModule } from 'primeng/slidemenu';
 import { SliderModule } from 'primeng/slider';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { SplitterModule } from 'primeng/splitter';
-import { StepsModule } from 'primeng/steps';
-import { TabMenuModule } from 'primeng/tabmenu';
+import { StepsModule } from 'primeng/steps'; 
+import { TabsModule } from 'primeng/tabs';
 import { TableModule } from 'primeng/table';
-import { TabViewModule } from 'primeng/tabview';
 import { TagModule } from 'primeng/tag';
 import { TerminalModule } from 'primeng/terminal';
 import { TieredMenuModule } from 'primeng/tieredmenu';
@@ -78,14 +73,13 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { TooltipModule } from 'primeng/tooltip';
 import { TreeModule } from 'primeng/tree';
 import { TreeTableModule } from 'primeng/treetable';
-import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { ScrollerModule } from 'primeng/scroller';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { EditorModule } from 'primeng/editor';
-import { AnimateModule } from 'primeng/animate';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 
-import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
+
 import { RouterModule } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AddRowOVSMDirective } from './shared/directives/add-rowovsm.directive';
@@ -98,7 +92,6 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
     imports: [
         CommonModule,
         AnimateOnScrollModule,
-        AnimateModule,
         FormsModule,
         RouterModule,
         AccordionModule,
@@ -108,14 +101,13 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         BadgeModule,
         BreadcrumbModule,
         ButtonModule,
-        CalendarModule,
+        DatePickerModule,
         CardModule,
         CarouselModule,
         CascadeSelectModule,
         ChartModule,
         CheckboxModule,
         ChipModule,
-        ChipsModule,
         ConfirmDialogModule,
         ConfirmPopupModule,
         ColorPickerModule,
@@ -123,7 +115,7 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         DataViewModule,
         DialogModule,
         DividerModule,
-        DropdownModule,
+        SelectModule,
         FieldsetModule,
         FileUploadModule,
         GalleriaModule,
@@ -131,20 +123,18 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         InplaceModule,
         InputNumberModule,
         InputMaskModule,
-        InputSwitchModule,
+        ToggleSwitchModule,
         InputTextModule,
-        InputTextareaModule,
+        TextareaModule,
         KnobModule,
         ListboxModule,
         MegaMenuModule,
         MenuModule,
         MenubarModule,
         MessageModule,
-        MessagesModule,
         MultiSelectModule,
         OrderListModule,
         OrganizationChartModule,
-        OverlayPanelModule,
         PaginatorModule,
         PanelModule,
         PanelMenuModule,
@@ -157,16 +147,14 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         ScrollPanelModule,
         ScrollTopModule,
         SelectButtonModule,
-        SidebarModule,
+        DrawerModule,
         SkeletonModule,
-        SlideMenuModule,
         SliderModule,
         SplitButtonModule,
         SplitterModule,
         StepsModule,
         TableModule,
-        TabMenuModule,
-        TabViewModule,
+        TabsModule,
         TagModule,
         TerminalModule,
         TieredMenuModule,
@@ -177,13 +165,12 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         TooltipModule,
         TreeModule,
         TreeTableModule,
-        VirtualScrollerModule,
+        ScrollerModule,
         DynamicDialogModule,
         ReactiveFormsModule,
         ProgressSpinnerModule,
         FullCalendarModule,
         EditorModule,
-        TriStateCheckboxModule,
         DataViewModule,
         SafePipe,
         ReduceDuplicatesSelectItemPipe,
@@ -207,7 +194,6 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         CommonModule,
         FormsModule,
         AnimateOnScrollModule,
-        AnimateModule,
         RouterModule,
         AccordionModule,
         AutoCompleteModule,
@@ -216,14 +202,13 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         BadgeModule,
         BreadcrumbModule,
         ButtonModule,
-        CalendarModule,
+        DatePickerModule,
         CardModule,
         CarouselModule,
         CascadeSelectModule,
         ChartModule,
         CheckboxModule,
         ChipModule,
-        ChipsModule,
         ConfirmDialogModule,
         ConfirmPopupModule,
         ColorPickerModule,
@@ -231,7 +216,7 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         DataViewModule,
         DialogModule,
         DividerModule,
-        DropdownModule,
+        SelectModule,
         FieldsetModule,
         FileUploadModule,
         GalleriaModule,
@@ -239,20 +224,18 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         InplaceModule,
         InputNumberModule,
         InputMaskModule,
-        InputSwitchModule,
+        ToggleSwitchModule,
         InputTextModule,
-        InputTextareaModule,
+        TextareaModule,
         KnobModule,
         ListboxModule,
         MegaMenuModule,
         MenuModule,
         MenubarModule,
         MessageModule,
-        MessagesModule,
         MultiSelectModule,
         OrderListModule,
         OrganizationChartModule,
-        OverlayPanelModule,
         PaginatorModule,
         PanelModule,
         PanelMenuModule,
@@ -265,16 +248,14 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         ScrollPanelModule,
         ScrollTopModule,
         SelectButtonModule,
-        SidebarModule,
+        DrawerModule,
         SkeletonModule,
-        SlideMenuModule,
         SliderModule,
         SplitButtonModule,
         SplitterModule,
         StepsModule,
         TableModule,
-        TabMenuModule,
-        TabViewModule,
+        TabsModule,
         TagModule,
         TerminalModule,
         TieredMenuModule,
@@ -285,13 +266,12 @@ import { ReduceDuplicatesSelectItemPipe } from './shared/pipes/reduce-duplicates
         TooltipModule,
         TreeModule,
         TreeTableModule,
-        VirtualScrollerModule,
+        ScrollerModule,
         DynamicDialogModule,
         ReactiveFormsModule,
         ProgressSpinnerModule,
         FullCalendarModule,
         EditorModule,
-        TriStateCheckboxModule,
         DataViewModule,
 
         //Components

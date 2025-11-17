@@ -24,7 +24,8 @@ import { SharedModule } from '../shared.module';
             }
         }
     `],
-    imports: [SharedModule]
+    imports: [SharedModule],
+    standalone: true
 })
 export class AppCalendarComponent implements OnInit {
 

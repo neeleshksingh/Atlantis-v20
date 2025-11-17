@@ -4,23 +4,28 @@
             <h5>Calendar</h5>
             <full-calendar [options]="options"></full-calendar>
 
-            <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
+            <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true"
+                [closable]="true">
                 <ng-template pTemplate="content">
                     <div class="p-fluid">
                         <div class="field">
                             <label for="title">Title</label>
-                            <input id="title" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.title" [required]="true">
+                            <input id="title" name="title" type="text" pInputText *ngIf="clickedEvent"
+                                [(ngModel)]="changedEvent.title" [required]="true">
                         </div>
                         <div class="field">
                             <label for="start">From</label>
-                            <p-calendar id="start" *ngIf="clickedEvent" [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
+                            <p-datepicker id="start" name="start" *ngIf="clickedEvent" [(ngModel)]="changedEvent.start"
+                                [showTime]="true" appendTo="body"></p-datepicker>
                         </div>
                         <div class="field">
                             <label for="end">To</label>
-                            <p-calendar id="end" *ngIf="clickedEvent" [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
+                            <p-datepicker id="end" name="end" *ngIf="clickedEvent" [(ngModel)]="changedEvent.end"
+                                [showTime]="true" appendTo="body"></p-datepicker>
                         </div>
                         <div class="p-field-checkbox">
-                            <p-checkbox id="allday" *ngIf="clickedEvent" [(ngModel)]="changedEvent.allday"></p-checkbox>
+                            <p-checkbox id="allday" name="allday" *ngIf="clickedEvent"
+                                [(ngModel)]="changedEvent.allday"></p-checkbox>
                             <label for="allday">All Day</label>
                         </div>
                     </div>

@@ -1,8 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles – PrimeNG 20 theme handled via providePrimeNG() in app.module.ts */
 
-@import "../node_modules/primeng/resources/primeng.min.css";
-@import "../node_modules/primeflex/primeflex.scss";
+/* PrimeIcons – required for icons */
 @import "../node_modules/primeicons/primeicons.css";
+
+/* PrimeFlex – layout/grid utilities */
+@import "../node_modules/primeflex/primeflex.scss";
+
+/* PrismJS syntax highlighting */
 @import "../node_modules/prismjs/themes/prism-coy.css";
+
+/* Atlantis demo styles */
 @import "assets/demo/flags/flags.css";
 @import "assets/demo/documentation.scss";
+
+/* Custom layout integration with PrimeNG 20 dark mode */
+body.p-dark,
+html.p-dark body {
+    background: linear-gradient(180deg, #2e323f 0%, #0a061a 100%) !important;
+    color: #ffffff !important;
+}
+
+/* Ensure layout components adapt to PrimeNG 20 dark mode */
+.p-dark .layout-topbar {
+    background: linear-gradient(180deg, #2e323f 0%, #0a061a 100%);
+    color: #ffffff;
+}
+
+.p-dark .layout-topbar .layout-topbar-left .topbar-menu-button {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #c8ccd8;
+}
+
+.p-dark .layout-topbar .layout-topbar-left .topbar-menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.p-dark .layout-menu-wrapper {
+    background: linear-gradient(180deg, #2e323f 0%, #0a061a 100%);
+}
+
+.p-dark .layout-menu-wrapper .layout-menu li a {
+    color: #c8ccd8;
+}
+
+.p-dark .layout-menu-wrapper .layout-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.p-dark .layout-menu-wrapper .layout-menu li.active-menuitem > a {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #0f8bfd;
+}

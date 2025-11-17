@@ -5,7 +5,8 @@ import { SharedModule } from '../shared.module';
 @Component({
     selector: 'app-notfound',
     templateUrl: './app.notfound.component.html',
-    imports: [SharedModule]
+    imports: [SharedModule],
+    standalone: true
 })
 export class AppNotfoundComponent {
   constructor(public app: AppComponent) { }

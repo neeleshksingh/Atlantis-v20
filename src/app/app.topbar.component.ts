@@ -6,6 +6,7 @@ import { AppMenuComponent } from './app.menu.component';
 
 @Component({
     selector: 'app-topbar',
+    standalone: true,
     template: `
         <div class="layout-topbar">
             <div class="layout-topbar-left">

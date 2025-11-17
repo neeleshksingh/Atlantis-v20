@@ -9,7 +9,8 @@ import { SharedModule } from 'src/app/shared.module';
 
 @Component({
     templateUrl: './dashboard.component.html',
-    imports: [SharedModule]
+    imports: [SharedModule],
+    standalone: true
 })
 export class DashboardDemoComponent implements OnInit, OnDestroy {
 
