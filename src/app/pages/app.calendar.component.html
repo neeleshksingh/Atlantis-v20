@@ -11,20 +11,21 @@
                         <div class="field">
                             <label for="title">Title</label>
                             <input id="title" name="title" type="text" pInputText [(ngModel)]="changedEvent.title"
-                                [required]="true">
+                                [required]="true" [ngModelOptions]="{ standalone: true }">
                         </div>
                         <div class="field">
                             <label for="start">From</label>
                             <p-datepicker id="start" name="start" [(ngModel)]="changedEvent.start" [showTime]="true"
-                                appendTo="body"></p-datepicker>
+                                appendTo="body" [ngModelOptions]="{ standalone: true }"></p-datepicker>
                         </div>
                         <div class="field">
                             <label for="end">To</label>
                             <p-datepicker id="end" name="end" [(ngModel)]="changedEvent.end" [showTime]="true"
-                                appendTo="body"></p-datepicker>
+                                appendTo="body" [ngModelOptions]="{ standalone: true }"></p-datepicker>
                         </div>
                         <div class="p-field-checkbox">
-                            <p-checkbox id="allday" name="allday" [(ngModel)]="changedEvent.allday"></p-checkbox>
+                            <p-checkbox id="allday" name="allday" [(ngModel)]="changedEvent.allday"
+                                [ngModelOptions]="{ standalone: true }"></p-checkbox>
                             <label for="allday">All Day</label>
                         </div>
                     </div>
